@@ -9,6 +9,7 @@ def test_login(driver, username, password, login_bool):
     loginpage = Login_Page(driver)
     loginpage.open()
     loginpage.login(username,password)
+    print(loginpage.get_error_message())
 
     if login_bool:
         assert "inventory.html"
