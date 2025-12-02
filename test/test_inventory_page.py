@@ -1,7 +1,9 @@
 from page.login_page import Login_Page
 from page.inventory_page import Inventory_Page
 import time
+
 tittle_inventary = "Products"
+
 def test_inventory( driver ):
     login = Login_Page(driver)
     inventory = Inventory_Page(driver)
