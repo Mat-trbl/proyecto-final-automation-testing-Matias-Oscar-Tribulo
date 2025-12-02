@@ -10,19 +10,19 @@ def test_checkout_process(driver):
     inventory = Inventory_Page(driver)
     cart = Cart_Page(driver)
     checkout = CheckoutPage(driver)
-    # inicio, logueo de la pagina 
+    # Inicio, logueo de la pagina 
     login.open()
     login.login("standard_user", "secret_sauce")
     time.sleep(4)
-    # una vez ingresado, entro en la pagina inventary y seleciono un  producto
+    # Una vez ingresado, entro en la pagina inventary y seleciono un  producto
     inventory.add_product_to_cart(0)
-    # ingreso en el carrito
+    # Ingreso en el carrito
     inventory.go_to_cart()
     time.sleep(4)
-    # ingreso en el checkout
+    # Ingreso en el checkout
     cart.go_to_checkout()
     time.sleep(3)
-    # verifico que ingrese en la pagina de checkout
+    # Verifico que ingrese en la pagina de checkout
     assert checkout.is_at_page()
     
     # Lleno la información requerida
