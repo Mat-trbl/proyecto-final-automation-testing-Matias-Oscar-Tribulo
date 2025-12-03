@@ -1,0 +1,133 @@
+16:51:57 INFO WDM - ====== WebDriver manager ======
+16:52:00 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+16:52:01 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+16:52:02 INFO WDM - Driver [C:\Users\Mat.DESKTOP-BNG783G\.wdm\drivers\geckodriver\win64\v0.36.0\geckodriver.exe] found in cache
+16:52:31 INFO WDM - ====== WebDriver manager ======
+16:52:33 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+16:52:34 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+16:52:35 INFO WDM - Driver [C:\Users\Mat.DESKTOP-BNG783G\.wdm\drivers\geckodriver\win64\v0.36.0\geckodriver.exe] found in cache
+16:52:55 INFO WDM - ====== WebDriver manager ======
+16:52:57 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+16:52:58 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+16:52:59 INFO WDM - Driver [C:\Users\Mat.DESKTOP-BNG783G\.wdm\drivers\geckodriver\win64\v0.36.0\geckodriver.exe] found in cache
+16:59:51 INFO WDM - ====== WebDriver manager ======
+16:59:53 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+16:59:55 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+16:59:56 INFO WDM - Driver [C:\Users\Mat.DESKTOP-BNG783G\.wdm\drivers\geckodriver\win64\v0.36.0\geckodriver.exe] found in cache
+17:00:36 INFO WDM - ====== WebDriver manager ======
+17:00:38 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+17:00:39 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+17:00:40 INFO WDM - Driver [C:\Users\Mat.DESKTOP-BNG783G\.wdm\drivers\geckodriver\win64\v0.36.0\geckodriver.exe] found in cache
+17:00:59 INFO WDM - ====== WebDriver manager ======
+17:01:02 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+17:01:03 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+17:01:04 INFO WDM - Driver [C:\Users\Mat.DESKTOP-BNG783G\.wdm\drivers\geckodriver\win64\v0.36.0\geckodriver.exe] found in cache
+17:03:32 INFO root - 
+=== Test 1: GET Users ===
+17:03:34 INFO root - \u2705 Código de estado 200 - OK
+17:03:34 INFO root - \u2705 Estructura JSON correcta (Lista)
+17:03:34 INFO root - \u2705 Estructura del usuario correcta
+17:03:34 INFO root - \u2705 Tipos de datos correctos
+17:04:34 INFO root - 
+=== Test 1: GET Users ===
+17:04:36 INFO root - \u2705 Código de estado 200 - OK
+17:04:36 INFO root - \u2705 Estructura JSON correcta (Lista)
+17:04:36 INFO root - \u2705 Estructura del usuario correcta
+17:04:36 INFO root - \u2705 Tipos de datos correctos
+17:04:36 INFO root - \U0001f389 Test GET Users de GoRest completado exitosamente!
+17:05:14 INFO root - 
+=== Test 1: GET Users ===
+17:05:15 INFO root - \u2705 Código de estado 200 - OK
+17:05:15 INFO root - \u2705 Estructura JSON correcta (Lista)
+17:05:15 INFO root - \u2705 Estructura del usuario correcta
+17:05:15 INFO root - \u2705 Tipos de datos correctos
+17:05:15 INFO root - \U0001f389 Test GET Users de GoRest completado exitosamente!
+17:29:21 INFO root - 
+=== Test 1: GET Users ===
+17:29:23 INFO root - \u2705 Código de estado 200 - OK
+17:29:23 INFO root - \u2705 Estructura JSON correcta (Lista)
+17:29:23 INFO root - \u2705 Estructura del usuario correcta
+17:29:23 INFO root - \u2705 Tipos de datos correctos
+17:29:23 INFO root - \U0001f389 Test GET Users de GoRest completado exitosamente!
+17:29:23 INFO root - 
+=== Test 2: Post Create User ===
+17:31:22 INFO root - 
+=== Test 1: GET Users ===
+17:31:23 INFO root - \u2705 Código de estado 200 - OK
+17:31:23 INFO root - \u2705 Estructura JSON correcta (Lista)
+17:31:23 INFO root - \u2705 Estructura del usuario correcta
+17:31:23 INFO root - \u2705 Tipos de datos correctos
+17:31:23 INFO root - \U0001f389 Test GET Users de GoRest completado exitosamente!
+17:31:23 INFO root - 
+=== Test 2: Post Create User ===
+17:34:13 INFO root - 
+=== Test 1: GET Users ===
+17:34:15 INFO root - \u2705 Código de estado 200 - OK
+17:34:15 INFO root - \u2705 Estructura JSON correcta (Lista)
+17:34:15 INFO root - \u2705 Estructura del usuario correcta
+17:34:15 INFO root - \u2705 Tipos de datos correctos
+17:34:15 INFO root - \U0001f389 Test GET Users de GoRest completado exitosamente!
+17:34:15 INFO root - 
+=== Test 2: Post Create User ===
+17:42:52 INFO root - 
+=== Test 1: GET Users ===
+17:42:54 INFO root - \u2705 Código de estado 200 - OK
+17:42:54 INFO root - \u2705 Estructura JSON correcta (Lista)
+17:42:54 INFO root - \u2705 Estructura del usuario correcta
+17:42:54 INFO root - \u2705 Tipos de datos correctos
+17:42:54 INFO root - \U0001f389 Test GET Users de GoRest completado exitosamente!
+17:42:54 INFO root - 
+=== Test 2: Post Create User ===
+17:42:56 INFO root - \u2705 Código de estado 201 - Created
+17:42:56 INFO root - \u2705 Estructura de respuesta correcta
+17:42:56 INFO root - \u2705 Datos guardados correctamente
+17:42:56 INFO root - \u2705 ID asignado correctamente: {data['id']}
+17:42:56 INFO root - \U0001f389 Test CREATE User completado exitosamente!
+17:44:32 INFO root - 
+=== Test 1: GET Users ===
+17:44:33 INFO root - \u2705 Código de estado 200 - OK
+17:44:33 INFO root - \u2705 Estructura JSON correcta (Lista)
+17:44:33 INFO root - \u2705 Estructura del usuario correcta
+17:44:33 INFO root - \u2705 Tipos de datos correctos
+17:44:33 INFO root - \U0001f389 Test GET Users de GoRest completado exitosamente!
+17:44:34 INFO root - 
+=== Test 2: Post Create User ===
+17:44:35 INFO root - \u2705 Código de estado 201 - Created
+17:44:35 INFO root - \u2705 Estructura de respuesta correcta
+17:44:35 INFO root - \u2705 Datos guardados correctamente
+17:44:35 INFO root - \u2705 ID asignado correctamente: {data['id']}
+17:44:35 INFO root - \U0001f389 Test CREATE User completado exitosamente!
+18:04:05 INFO root - 
+=== Test 1: GET Users ===
+18:04:08 INFO root - \u2705 Código de estado 200 - OK
+18:04:08 INFO root - \u2705 Estructura JSON correcta (Lista)
+18:04:08 INFO root - \u2705 Estructura del usuario correcta
+18:04:08 INFO root - \u2705 Tipos de datos correctos
+18:04:08 INFO root - \U0001f389 Test GET Users de GoRest completado exitosamente!
+18:04:08 INFO root - 
+=== Test 2: Post Create User ===
+18:04:10 INFO root - \u2705 Código de estado 201 - Created
+18:04:10 INFO root - \u2705 Estructura de respuesta correcta
+18:04:10 INFO root - \u2705 Datos guardados correctamente
+18:04:10 INFO root - \u2705 ID asignado correctamente: {data['id']}
+18:04:10 INFO root - \U0001f389 Test CREATE User completado exitosamente!
+18:40:54 INFO root - 
+=== Test 1: GET Users ===
+18:40:57 INFO root - \u2705 Código de estado 200 - OK
+18:40:57 INFO root - \u2705 Estructura JSON correcta (Lista)
+18:40:57 INFO root - \u2705 Estructura del usuario correcta
+18:40:57 INFO root - \u2705 Tipos de datos correctos
+18:40:57 INFO root - \U0001f389 Test GET Users de GoRest completado exitosamente!
+18:40:57 INFO root - 
+=== Test 2: Post Create User ===
+18:40:58 INFO root - \u2705 Código de estado 201 - Created
+18:40:58 INFO root - \u2705 Estructura de respuesta correcta
+18:40:58 INFO root - \u2705 Datos guardados correctamente
+18:40:58 INFO root - \u2705 ID asignado correctamente: {data['id']}
+18:40:58 INFO root - \U0001f389 Test CREATE User completado exitosamente!
+18:40:58 INFO root - 
+=== Test 3: DELETE User ===
+18:41:00 INFO root - Usuario 8277254 creado para DELETE.
+18:41:02 INFO root - \u2705 Código de estado 204 - No Content
+18:41:04 INFO root - \u2705 Verificación 404 exitosa (Usuario no existe
+18:41:04 INFO root - \U0001f389 Test DELETE User ID {created_user_id} completado exitosamente!
