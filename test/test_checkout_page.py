@@ -26,7 +26,7 @@ def test_checkout_process(driver):
     assert checkout.is_at_page()
     
     # Lleno la información requerida
-    checkout.fill_customer_info("Barry", "Allen", "Flash_Run")
+    checkout.fill_customer_info("Barry", "Allen", "1852")
     checkout.continue_to_overview()
     # verifico que paso a la siguente pagina del proceso de checkout
     assert "checkout-step-two" in driver.current_url
