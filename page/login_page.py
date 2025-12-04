@@ -4,6 +4,7 @@ from utils.helpers import URL_page
 from selenium.webdriver.common.by import By
 
 
+
 class Login_Page:
     login_name_box = (By.NAME,"user-name")
     login_password_box = (By.NAME,"password")
@@ -14,6 +15,9 @@ class Login_Page:
 
     def open(self):
         self.driver.get(URL_page)
+
+    def is_at_page( self ):
+        return URL_page in self.driver.current_url
 
     def login(self, username, password):
         WebDriverWait(self.driver,5).until(
@@ -37,6 +41,6 @@ class Login_Page:
 
     def get_error_message(self):
         #Obtiene el texto del mensaje de error.
-        if self.this_error_is_visible(): 
+        if self.this_error_is_visible():
             return self.driver.find_element(*self._ERROR_MESSAGE).text 
         return ""   
