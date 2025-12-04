@@ -17,7 +17,7 @@ GOREST_HEADERS = {
 fake = Faker()
 
 class TestGoRest:
-    print ("Tests para GoRest API - Enfocados en la obtención de usuarios")
+    print ("- Tests for GoRest API - ")
     
     # TEST 1: GET - Obtener lista de usuarios (Éxito)
     def test_get_users_success(self):
@@ -32,8 +32,8 @@ class TestGoRest:
         
         # Validar código de estado
         assert response.status_code == 200, f"Esperado 200, Obtenido {response.status_code}"
-        print("✅ Código de estado 200 - OK")
-        logger.info("✅ Código de estado 200 - OK")
+        print("✅ State code 200 - OK")
+        logger.info("✅ State code 200 - OK")
         
         # Convertir a JSON
         data = response.json()
@@ -41,25 +41,25 @@ class TestGoRest:
         # Validar estructura del JSON
         assert isinstance(data, list), "La respuesta debería ser una lista de usuarios"
         assert len(data) > 0, "La lista de usuarios no debería estar vacía"
-        print("✅ Estructura JSON correcta (Lista)")
-        logger.info("✅ Estructura JSON correcta (Lista)")
+        print("✅ Correct JSON structure (List)")
+        logger.info("✅ Correct JSON structure (List)")
         # Validar estructura del primer usuario
         first_user = data[0]
         required_fields = ["id", "name", "email", "gender", "status"] 
         for field in required_fields:
             assert field in first_user, f"Campo '{field}' no encontrado en el usuario"
-        print("✅ Estructura del usuario correcta")
-        logger.info("✅ Estructura del usuario correcta")
+        print("✅ Correct user structure")
+        logger.info("✅ Correct user structure")
         # Validar tipos de datos
         assert isinstance(first_user["id"], int)
         assert isinstance(first_user["name"], str)
         assert isinstance(first_user["email"], str)
         assert isinstance(first_user["gender"], str) 
         assert isinstance(first_user["status"], str) 
-        print("✅ Tipos de datos correctos")
-        logger.info("✅ Tipos de datos correctos")
-        print("🎉 Test GET Users de GoRest completado exitosamente!")
-        logger.info("🎉 Test GET Users de GoRest completado exitosamente!")
+        print("✅ Correct data types")
+        logger.info("✅ Correct data types")
+        print("🎉 GoRest GET Users test successfully completed!")
+        logger.info("🎉 GoRest GET Users test successfully completed!")
 
     # TEST 2: POST - Crear un nuevo usuario (Éxito)
     def test_create_post_sucess(self):
@@ -88,8 +88,8 @@ class TestGoRest:
             f"Fallo al crear usuario. Esperado 201, Obtenido {response.status_code}. "
             f"Respuesta: {response.text}"
         )
-        print("✅ Código de estado 201 - Created")
-        logger.info("✅ Código de estado 201 - Created")
+        print("✅ State code 201 - Created")
+        logger.info("✅ State code 201 - Created")
 
         # 4. Convertir a JSON
         data = response.json()
@@ -98,25 +98,25 @@ class TestGoRest:
         expected_fields = ["id", "name", "email", "gender", "status"]
         for field in expected_fields:
             assert field in data, f"Campo '{field}' no encontrado en respuesta"
-        print("✅ Estructura de respuesta correcta")
-        logger.info("✅ Estructura de respuesta correcta")
+        print("✅ Correct answer structure")
+        logger.info("✅ Correct answer structure")
 
         # 6. Validar que los datos se guardaron correctamente
         assert data["name"] == post_data["name"]
         assert data["email"] == post_data["email"]
         assert data["gender"] == post_data["gender"]
         assert data["status"] == post_data["status"]
-        print("✅ Datos guardados correctamente")
-        logger.info("✅ Datos guardados correctamente")
+        print("✅ Data saved successfully")
+        logger.info("✅ Data saved successfully")
         
         # 7. Validar el ID generado
         # El ID generado debe ser un entero y no nulo.
         assert isinstance(data["id"], int)
         assert data["id"] is not None
-        print(f"✅ ID asignado correctamente: {data['id']}")
-        logger.info("✅ ID asignado correctamente: {data['id']}")
-        print("🎉 Test CREATE User completado exitosamente!")
-        logger.info("🎉 Test CREATE User completado exitosamente!")
+        print(f"✅ ID assigned correctly: {data['id']}")
+        logger.info("✅ ID assigned correctly: {data['id']}")
+        print("🎉 CREATE User test completed successfully!")
+        logger.info("🎉 CREATE User test completed successfully!")
 
     # TEST 3: DELETE - Eliminar un usuario (Éxito)
     def test_delete_user_success(self):
@@ -125,7 +125,7 @@ class TestGoRest:
         print("\n=== Test 3: DELETE User ===")
         
         # --- PASO 1: CREAR EL RECURSO A ELIMINAR (SETUP) ---
-        print("🔧 STEP 1: Creando usuario temporal para DELETE...")
+        print("🔧 STEP 1: Creating a temporary user for DELETE...")
         
         # Datos para crear el post
         post_data = {
@@ -142,8 +142,8 @@ class TestGoRest:
         assert creation_response.status_code == 201, "Falló el Setup: No se pudo crear el usuario."
         created_user_id = creation_response.json()["id"]
         
-        print(f"✅ Usuario creado con ID: {created_user_id}")
-        logger.info(f"Usuario {created_user_id} creado para DELETE.")
+        print(f"✅ User created with ID: {created_user_id}")
+        logger.info(f"User {created_user_id} created for DELETE.")
         
         # --- PASO 2: EJECUTAR DELETE ---
         
@@ -161,13 +161,13 @@ class TestGoRest:
         assert response.status_code == 204, (
             f"Esperado 204 No Content, obtenido {response.status_code}. Respuesta: {response.text}"
         )
-        print("✅ Código de estado 204 - No Content")
-        logger.info("✅ Código de estado 204 - No Content")
+        print("✅ State code 204 - No Content")
+        logger.info("✅ State code 204 - No Content")
         
         # 3.2 Validar cuerpo de la respuesta
         # Para 204, el cuerpo debe estar vacío (no hay contenido para analizar en JSON)
         assert response.text == "", f"Esperado cuerpo vacío, obtenido: {response.text}"
-        print("✅ Respuesta DELETE correcta (Cuerpo vacío)")
+        print("✅ Correct answer: DELETE (Empty body)")
         
         # --- PASO 4: VERIFICAR ELIMINACIÓN (TEARDOWN / OPCIONAL) ---
         
@@ -178,7 +178,7 @@ class TestGoRest:
         assert verification_response.status_code == 404, (
             f"Fallo en verificación: Se esperaba 404, obtenido {verification_response.status_code}"
         )
-        print("✅ Verificación 404 exitosa (Usuario no existe)")
-        logger.info("✅ Verificación 404 exitosa (Usuario no existe")
-        print(f"🎉 Test DELETE User ID {created_user_id} completado exitosamente!")
-        logger.info("🎉 Test DELETE User ID {created_user_id} completado exitosamente!")
+        print("✅ Verification 404 successful (User does not exist)")
+        logger.info("✅ Verification 404 successful (User does not exist)")
+        print(f"🎉 Test DELETE User ID {created_user_id} successfully completed!")
+        logger.info("🎉 Test DELETE User ID {created_user_id} successfully completed!")
