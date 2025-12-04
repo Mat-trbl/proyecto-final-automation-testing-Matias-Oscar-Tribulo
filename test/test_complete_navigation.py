@@ -61,8 +61,8 @@ def test_complete_navegation(driver):
     assert "Thank you for your order!" in overvierw.get_success_message()
     driver.save_screenshot('screenshot/test_complete_navigation/message_finish.png')
     assert overvierw.is_success_image_displayed()
-    logger.info("message:"+ overvierw.get_success_message() + " - OK")
-    print("✅message:"+ overvierw.get_success_message() + " - OK")
+    logger.info(" message:"+ overvierw.get_success_message() + " - OK")
+    print("✅ message:"+ overvierw.get_success_message() + " - OK")
     # Vuelvo al inicio
     overvierw.back_to_home()
     assert inventory.is_at_page()
