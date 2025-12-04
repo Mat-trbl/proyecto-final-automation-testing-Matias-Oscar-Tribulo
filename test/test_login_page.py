@@ -18,14 +18,14 @@ def test_login(driver, username, password, login_bool):
     
     
     if login_bool == True:
-        logger.info("logueo correcto - OK")
-        print("✅ logueo correcto - OK")
+        logger.info(" correct login - OK")
+        print("✅ correct login - OK")
         driver.save_screenshot('screenshot/test_login/login_ok.png')
         assert inventory.is_at_page()
     else:
         logger.info("mesage de error:"+ loginpage.get_error_message())
         print("mesage de error:"+loginpage.get_error_message())
-        logger.info("logueo incorrecto - OK")
-        print("✅ logueo incorrecto - OK")
+        logger.info("incorrect login - OK")
+        print("✅ incorrect login - OK")
         driver.save_screenshot('screenshot/test_login/login_fail.png')
         assert loginpage.is_at_page()
