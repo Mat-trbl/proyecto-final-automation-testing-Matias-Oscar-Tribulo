@@ -3,11 +3,332 @@
   <head>
     <meta charset="utf-8"/>
     <title id="head-title">reporte.html</title>
-      <link href="assets\style.css" rel="stylesheet" type="text/css"/>
+      <style type="text/css">body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  /* do not increase min-width as some may use split screens */
+  min-width: 800px;
+  color: #999;
+}
+
+h1 {
+  font-size: 24px;
+  color: black;
+}
+
+h2 {
+  font-size: 16px;
+  color: black;
+}
+
+p {
+  color: black;
+}
+
+a {
+  color: #999;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/******************************
+ * SUMMARY INFORMATION
+ ******************************/
+#environment td {
+  padding: 5px;
+  border: 1px solid #e6e6e6;
+  vertical-align: top;
+}
+#environment tr:nth-child(odd) {
+  background-color: #f6f6f6;
+}
+#environment ul {
+  margin: 0;
+  padding: 0 20px;
+}
+
+/******************************
+ * TEST RESULT COLORS
+ ******************************/
+span.passed,
+.passed .col-result {
+  color: green;
+}
+
+span.skipped,
+span.xfailed,
+span.rerun,
+.skipped .col-result,
+.xfailed .col-result,
+.rerun .col-result {
+  color: orange;
+}
+
+span.error,
+span.failed,
+span.xpassed,
+.error .col-result,
+.failed .col-result,
+.xpassed .col-result {
+  color: red;
+}
+
+.col-links__extra {
+  margin-right: 3px;
+}
+
+/******************************
+ * RESULTS TABLE
+ *
+ * 1. Table Layout
+ * 2. Extra
+ * 3. Sorting items
+ *
+ ******************************/
+/*------------------
+ * 1. Table Layout
+ *------------------*/
+#results-table {
+  border: 1px solid #e6e6e6;
+  color: #999;
+  font-size: 12px;
+  width: 100%;
+}
+#results-table th,
+#results-table td {
+  padding: 5px;
+  border: 1px solid #e6e6e6;
+  text-align: left;
+}
+#results-table th {
+  font-weight: bold;
+}
+
+/*------------------
+ * 2. Extra
+ *------------------*/
+.logwrapper {
+  max-height: 230px;
+  overflow-y: scroll;
+  background-color: #e6e6e6;
+}
+.logwrapper.expanded {
+  max-height: none;
+}
+.logwrapper.expanded .logexpander:after {
+  content: "collapse [-]";
+}
+.logwrapper .logexpander {
+  z-index: 1;
+  position: sticky;
+  top: 10px;
+  width: max-content;
+  border: 1px solid;
+  border-radius: 3px;
+  padding: 5px 7px;
+  margin: 10px 0 10px calc(100% - 80px);
+  cursor: pointer;
+  background-color: #e6e6e6;
+}
+.logwrapper .logexpander:after {
+  content: "expand [+]";
+}
+.logwrapper .logexpander:hover {
+  color: #000;
+  border-color: #000;
+}
+.logwrapper .log {
+  min-height: 40px;
+  position: relative;
+  top: -50px;
+  height: calc(100% + 50px);
+  border: 1px solid #e6e6e6;
+  color: black;
+  display: block;
+  font-family: "Courier New", Courier, monospace;
+  padding: 5px;
+  padding-right: 80px;
+  white-space: pre-wrap;
+}
+
+div.media {
+  border: 1px solid #e6e6e6;
+  float: right;
+  height: 240px;
+  margin: 0 5px;
+  overflow: hidden;
+  width: 320px;
+}
+
+.media-container {
+  display: grid;
+  grid-template-columns: 25px auto 25px;
+  align-items: center;
+  flex: 1 1;
+  overflow: hidden;
+  height: 200px;
+}
+
+.media-container--fullscreen {
+  grid-template-columns: 0px auto 0px;
+}
+
+.media-container__nav--right,
+.media-container__nav--left {
+  text-align: center;
+  cursor: pointer;
+}
+
+.media-container__viewport {
+  cursor: pointer;
+  text-align: center;
+  height: inherit;
+}
+.media-container__viewport img,
+.media-container__viewport video {
+  object-fit: cover;
+  width: 100%;
+  max-height: 100%;
+}
+
+.media__name,
+.media__counter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex: 0 0 25px;
+  align-items: center;
+}
+
+.collapsible td:not(.col-links) {
+  cursor: pointer;
+}
+.collapsible td:not(.col-links):hover::after {
+  color: #bbb;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.col-result {
+  width: 130px;
+}
+.col-result:hover::after {
+  content: " (hide details)";
+}
+
+.col-result.collapsed:hover::after {
+  content: " (show details)";
+}
+
+#environment-header h2:hover::after {
+  content: " (hide details)";
+  color: #bbb;
+  font-style: italic;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+#environment-header.collapsed h2:hover::after {
+  content: " (show details)";
+  color: #bbb;
+  font-style: italic;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+/*------------------
+ * 3. Sorting items
+ *------------------*/
+.sortable {
+  cursor: pointer;
+}
+.sortable.desc:after {
+  content: " ";
+  position: relative;
+  left: 5px;
+  bottom: -12.5px;
+  border: 10px solid #4caf50;
+  border-bottom: 0;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+.sortable.asc:after {
+  content: " ";
+  position: relative;
+  left: 5px;
+  bottom: 12.5px;
+  border: 10px solid #4caf50;
+  border-top: 0;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+
+.hidden, .summary__reload__button.hidden {
+  display: none;
+}
+
+.summary__data {
+  flex: 0 0 550px;
+}
+.summary__reload {
+  flex: 1 1;
+  display: flex;
+  justify-content: center;
+}
+.summary__reload__button {
+  flex: 0 0 300px;
+  display: flex;
+  color: white;
+  font-weight: bold;
+  background-color: #4caf50;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.summary__reload__button:hover {
+  background-color: #46a049;
+}
+.summary__spacer {
+  flex: 0 0 550px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filters,
+.collapse {
+  display: flex;
+  align-items: center;
+}
+.filters button,
+.collapse button {
+  color: #999;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.filters button:hover,
+.collapse button:hover {
+  color: #ccc;
+}
+
+.filter__label {
+  margin-right: 10px;
+}
+
+      </style>
+    
   </head>
   <body>
     <h1 id="title">reporte.html</h1>
-    <p>Report generated on 21-Oct-2025 at 20:17:20 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a>
+    <p>Report generated on 04-Dec-2025 at 13:39:17 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a>
         v4.1.1</p>
     <div id="environment-header">
       <h2>Environment</h2>
@@ -61,7 +382,7 @@
         <h2>Summary</h2>
         <div class="additional-summary prefix">
         </div>
-        <p class="run-count">3 tests took 00:01:24.</p>
+        <p class="run-count">11 tests took 00:04:28.</p>
         <p class="filter">(Un)check the boxes to filter the results.</p>
         <div class="summary__reload">
           <div class="summary__reload__button hidden" onclick="location.reload()">
@@ -74,7 +395,7 @@
             <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="failed" disabled/>
             <span class="failed">0 Failed,</span>
             <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="passed" />
-            <span class="passed">3 Passed,</span>
+            <span class="passed">11 Passed,</span>
             <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="skipped" disabled/>
             <span class="skipped">0 Skipped,</span>
             <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="xfailed" disabled/>
@@ -108,7 +429,7 @@
     </table>
   </body>
   <footer>
-    <div id="data-container" data-jsonblob="{&#34;environment&#34;: {&#34;Python&#34;: &#34;3.13.7&#34;, &#34;Platform&#34;: &#34;Windows-10-10.0.19045-SP0&#34;, &#34;Packages&#34;: {&#34;pytest&#34;: &#34;8.4.2&#34;, &#34;pluggy&#34;: &#34;1.6.0&#34;}, &#34;Plugins&#34;: {&#34;html&#34;: &#34;4.1.1&#34;, &#34;metadata&#34;: &#34;3.1.1&#34;}}, &#34;tests&#34;: {&#34;test/test_saucedemo.py::test_login&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;test/test_saucedemo.py::test_login&#34;, &#34;duration&#34;: &#34;00:00:31&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;test/test_saucedemo.py::test_login&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:31&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;No log output captured.&#34;}], &#34;test/test_saucedemo.py::test_catalogo&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;test/test_saucedemo.py::test_catalogo&#34;, &#34;duration&#34;: &#34;00:00:25&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;test/test_saucedemo.py::test_catalogo&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:25&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;----------------------------- Captured stdout call -----------------------------\nel contenido del menu es de: 6\n&#34;}], &#34;test/test_saucedemo.py::test_carrito&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;test/test_saucedemo.py::test_carrito&#34;, &#34;duration&#34;: &#34;00:00:28&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;test/test_saucedemo.py::test_carrito&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:28&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;----------------------------- Captured stdout call -----------------------------\nel producto es Sauce Labs Backpack\n&#34;}]}, &#34;renderCollapsed&#34;: [&#34;passed&#34;], &#34;initialSort&#34;: &#34;result&#34;, &#34;title&#34;: &#34;reporte.html&#34;}"></div>
+    <div id="data-container" data-jsonblob="{&#34;environment&#34;: {&#34;Python&#34;: &#34;3.13.7&#34;, &#34;Platform&#34;: &#34;Windows-10-10.0.19045-SP0&#34;, &#34;Packages&#34;: {&#34;pytest&#34;: &#34;8.4.2&#34;, &#34;pluggy&#34;: &#34;1.6.0&#34;}, &#34;Plugins&#34;: {&#34;Faker&#34;: &#34;37.12.0&#34;, &#34;html&#34;: &#34;4.1.1&#34;, &#34;metadata&#34;: &#34;3.1.1&#34;}}, &#34;tests&#34;: {&#34;test/test_api_gorest.py::TestGoRest::test_get_users_success&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;test/test_api_gorest.py::TestGoRest::test_get_users_success&#34;, &#34;duration&#34;: &#34;00:00:03&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;test/test_api_gorest.py::TestGoRest::test_get_users_success&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:03&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nINFO     root:test_api_gorest.py:25 \n=== Test 1: GET Users ===\nINFO     root:test_api_gorest.py:36 \u2705 State code 200 - OK\nINFO     root:test_api_gorest.py:45 \u2705 Correct JSON structure (List)\nINFO     root:test_api_gorest.py:52 \u2705 Correct user structure\nINFO     root:test_api_gorest.py:60 \u2705 Correct data types\nINFO     root:test_api_gorest.py:62 \ud83c\udf89 GoRest GET Users test successfully completed!\n\n&#34;}], &#34;test/test_api_gorest.py::TestGoRest::test_create_post_sucess&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;test/test_api_gorest.py::TestGoRest::test_create_post_sucess&#34;, &#34;duration&#34;: &#34;00:00:02&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;test/test_api_gorest.py::TestGoRest::test_create_post_sucess&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:02&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nINFO     root:test_api_gorest.py:67 \n=== Test 2: Post Create User ===\nINFO     root:test_api_gorest.py:92 \u2705 State code 201 - Created\nINFO     root:test_api_gorest.py:102 \u2705 Correct answer structure\nINFO     root:test_api_gorest.py:110 \u2705 Data saved successfully\nINFO     root:test_api_gorest.py:117 \u2705 ID assigned correctly: {data[&amp;#x27;id&amp;#x27;]}\nINFO     root:test_api_gorest.py:119 \ud83c\udf89 CREATE User test completed successfully!\n\n&#34;}], &#34;test/test_api_gorest.py::TestGoRest::test_delete_user_success&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;test/test_api_gorest.py::TestGoRest::test_delete_user_success&#34;, &#34;duration&#34;: &#34;00:00:06&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;test/test_api_gorest.py::TestGoRest::test_delete_user_success&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:06&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nINFO     root:test_api_gorest.py:124 \n=== Test 3: DELETE User ===\nINFO     root:test_api_gorest.py:146 User 8278329 created for DELETE.\nINFO     root:test_api_gorest.py:165 \u2705 State code 204 - No Content\nINFO     root:test_api_gorest.py:182 \u2705 Verification 404 successful (User does not exist)\nINFO     root:test_api_gorest.py:184 \ud83c\udf89 Test DELETE User ID {created_user_id} successfully completed!\n\n&#34;}], &#34;test/test_cart_page.py::test_cart&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;test/test_cart_page.py::test_cart&#34;, &#34;duration&#34;: &#34;00:00:49&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;test/test_cart_page.py::test_cart&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:49&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log setup ------------------------------\nINFO     WDM:logger.py:11 ====== WebDriver manager ======\nINFO     WDM:logger.py:11 Get LATEST geckodriver version for 145.0 firefox\nINFO     WDM:logger.py:11 Get LATEST geckodriver version for 145.0 firefox\nINFO     WDM:logger.py:11 Driver [C:\\Users\\Mat.DESKTOP-BNG783G\\.wdm\\drivers\\geckodriver\\win64\\v0.36.0\\geckodriver.exe] found in cache\n\n------------------------------ Captured log call -------------------------------\nINFO     root:test_cart_page.py:8 \n=== Test cart: cart page management  ===\nINFO     root:test_cart_page.py:19 correct login - OK\nINFO     root:test_cart_page.py:32 correct cart entering - OK\nINFO     root:test_cart_page.py:47 correct product loading - OK\nINFO     root:test_cart_page.py:56 correct product removing - OK\n\n&#34;}], &#34;test/test_checkout_page.py::test_checkout_process&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;test/test_checkout_page.py::test_checkout_process&#34;, &#34;duration&#34;: &#34;00:00:35&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;test/test_checkout_page.py::test_checkout_process&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:35&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log setup ------------------------------\nINFO     WDM:logger.py:11 ====== WebDriver manager ======\nINFO     WDM:logger.py:11 Get LATEST geckodriver version for 145.0 firefox\nINFO     WDM:logger.py:11 Get LATEST geckodriver version for 145.0 firefox\nINFO     WDM:logger.py:11 Driver [C:\\Users\\Mat.DESKTOP-BNG783G\\.wdm\\drivers\\geckodriver\\win64\\v0.36.0\\geckodriver.exe] found in cache\n\n------------------------------ Captured log call -------------------------------\nINFO     root:test_checkout_page.py:10 \n=== Test checkout process: checkout page management  ===\nINFO     root:test_checkout_page.py:21 correct login - OK\nINFO     root:test_checkout_page.py:27 correct product loading - OK\nINFO     root:test_checkout_page.py:33 correct cart entering - OK\nINFO     root:test_checkout_page.py:41 correct checkout entering - OK\nINFO     root:test_checkout_page.py:50 correct info loading - OK\n\n&#34;}], &#34;test/test_checkout_page.py::test_checkout_validation&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;test/test_checkout_page.py::test_checkout_validation&#34;, &#34;duration&#34;: &#34;00:00:28&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;test/test_checkout_page.py::test_checkout_validation&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:28&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log setup ------------------------------\nINFO     WDM:logger.py:11 ====== WebDriver manager ======\nINFO     WDM:logger.py:11 Get LATEST geckodriver version for 145.0 firefox\nINFO     WDM:logger.py:11 Get LATEST geckodriver version for 145.0 firefox\nINFO     WDM:logger.py:11 Driver [C:\\Users\\Mat.DESKTOP-BNG783G\\.wdm\\drivers\\geckodriver\\win64\\v0.36.0\\geckodriver.exe] found in cache\n\n------------------------------ Captured log call -------------------------------\nINFO     root:test_checkout_page.py:54 \n=== Test checkout validation: checkout page management  ===\nINFO     root:test_checkout_page.py:66 correct login - OK\nINFO     root:test_checkout_page.py:70 correct product loading - OK\nINFO     root:test_checkout_page.py:74 correct cart entering - OK\nINFO     root:test_checkout_page.py:78 correct checkout entering - OK\nINFO     root:test_checkout_page.py:86 Error: First Name is required\nINFO     root:test_checkout_page.py:89 message error - OK\n\n&#34;}], &#34;test/test_complete_navigation.py::test_complete_navegation&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;test/test_complete_navigation.py::test_complete_navegation&#34;, &#34;duration&#34;: &#34;00:00:37&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;test/test_complete_navigation.py::test_complete_navegation&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:37&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log setup ------------------------------\nINFO     WDM:logger.py:11 ====== WebDriver manager ======\nINFO     WDM:logger.py:11 Get LATEST geckodriver version for 145.0 firefox\nINFO     WDM:logger.py:11 Get LATEST geckodriver version for 145.0 firefox\nINFO     WDM:logger.py:11 Driver [C:\\Users\\Mat.DESKTOP-BNG783G\\.wdm\\drivers\\geckodriver\\win64\\v0.36.0\\geckodriver.exe] found in cache\n\n------------------------------ Captured log call -------------------------------\nINFO     root:test_complete_navigation.py:11 \n=== Test complete navigation: checkout page management  ===\nINFO     root:test_complete_navigation.py:27 correct login - OK\nINFO     root:test_complete_navigation.py:34 correct product loading - OK\nINFO     root:test_complete_navigation.py:39 correct cart entering - OK\nINFO     root:test_complete_navigation.py:45 correct checkout entering - OK\nINFO     root:test_complete_navigation.py:53 correct info loading - OK\nINFO     root:test_complete_navigation.py:59 successful completion of purchase - OK\nINFO     root:test_complete_navigation.py:64  message:Thank you for your order! - OK\nINFO     root:test_complete_navigation.py:69 correct back at home - OK\n\n&#34;}], &#34;test/test_inventory_page.py::test_inventory&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;test/test_inventory_page.py::test_inventory&#34;, &#34;duration&#34;: &#34;00:00:38&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;test/test_inventory_page.py::test_inventory&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:38&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log setup ------------------------------\nINFO     WDM:logger.py:11 ====== WebDriver manager ======\nINFO     WDM:logger.py:11 Get LATEST geckodriver version for 145.0 firefox\nINFO     WDM:logger.py:11 Get LATEST geckodriver version for 145.0 firefox\nINFO     WDM:logger.py:11 Driver [C:\\Users\\Mat.DESKTOP-BNG783G\\.wdm\\drivers\\geckodriver\\win64\\v0.36.0\\geckodriver.exe] found in cache\n\n------------------------------ Captured log call -------------------------------\nINFO     root:test_inventory_page.py:9 \n=== Test inventory: inventory page management  ===\nINFO     root:test_inventory_page.py:20 correct login - OK\nINFO     root:test_inventory_page.py:23 page title - OK\nINFO     root:test_inventory_page.py:33 correct product loading - OK\nINFO     root:test_inventory_page.py:38 correct cart entering - OK\nINFO     root:test_inventory_page.py:43 correct cart logouting - OK\n\n&#34;}], &#34;test/test_login_page.py::test_login[standard_user-secret_sauce-True]&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;test/test_login_page.py::test_login[standard_user-secret_sauce-True]&#34;, &#34;duration&#34;: &#34;00:00:25&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;test/test_login_page.py::test_login[standard_user-secret_sauce-True]&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:25&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log setup ------------------------------\nINFO     WDM:logger.py:11 ====== WebDriver manager ======\nINFO     WDM:logger.py:11 Get LATEST geckodriver version for 145.0 firefox\nINFO     WDM:logger.py:11 Get LATEST geckodriver version for 145.0 firefox\nINFO     WDM:logger.py:11 Driver [C:\\Users\\Mat.DESKTOP-BNG783G\\.wdm\\drivers\\geckodriver\\win64\\v0.36.0\\geckodriver.exe] found in cache\n\n------------------------------ Captured log call -------------------------------\nINFO     root:test_login_page.py:10 \n=== Test Login: login de users ===\nINFO     root:test_login_page.py:21  correct login - OK\n\n&#34;}], &#34;test/test_login_page.py::test_login[locked_out_user-secret_sauce-False]&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;test/test_login_page.py::test_login[locked_out_user-secret_sauce-False]&#34;, &#34;duration&#34;: &#34;00:00:23&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;test/test_login_page.py::test_login[locked_out_user-secret_sauce-False]&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:23&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log setup ------------------------------\nINFO     WDM:logger.py:11 ====== WebDriver manager ======\nINFO     WDM:logger.py:11 Get LATEST geckodriver version for 145.0 firefox\nINFO     WDM:logger.py:11 Get LATEST geckodriver version for 145.0 firefox\nINFO     WDM:logger.py:11 Driver [C:\\Users\\Mat.DESKTOP-BNG783G\\.wdm\\drivers\\geckodriver\\win64\\v0.36.0\\geckodriver.exe] found in cache\n\n------------------------------ Captured log call -------------------------------\nINFO     root:test_login_page.py:10 \n=== Test Login: login de users ===\nINFO     root:test_login_page.py:26 mesage de error:Epic sadface: Sorry, this user has been locked out.\nINFO     root:test_login_page.py:28 incorrect login - OK\n\n&#34;}], &#34;test/test_login_page.py::test_login[usuario_malo-password_malo-False]&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;test/test_login_page.py::test_login[usuario_malo-password_malo-False]&#34;, &#34;duration&#34;: &#34;00:00:23&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;test/test_login_page.py::test_login[usuario_malo-password_malo-False]&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:23&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log setup ------------------------------\nINFO     WDM:logger.py:11 ====== WebDriver manager ======\nINFO     WDM:logger.py:11 Get LATEST geckodriver version for 145.0 firefox\nINFO     WDM:logger.py:11 Get LATEST geckodriver version for 145.0 firefox\nINFO     WDM:logger.py:11 Driver [C:\\Users\\Mat.DESKTOP-BNG783G\\.wdm\\drivers\\geckodriver\\win64\\v0.36.0\\geckodriver.exe] found in cache\n\n------------------------------ Captured log call -------------------------------\nINFO     root:test_login_page.py:10 \n=== Test Login: login de users ===\nINFO     root:test_login_page.py:26 mesage de error:Epic sadface: Username and password do not match any user in this service\nINFO     root:test_login_page.py:28 incorrect login - OK\n\n&#34;}]}, &#34;renderCollapsed&#34;: [&#34;passed&#34;], &#34;initialSort&#34;: &#34;result&#34;, &#34;title&#34;: &#34;reporte.html&#34;}"></div>
     <script>
       (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 const { getCollapsedCategory, setCollapsedIds } = require('./storage.js')

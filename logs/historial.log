@@ -131,3 +131,104 @@
 18:41:02 INFO root - \u2705 Código de estado 204 - No Content
 18:41:04 INFO root - \u2705 Verificación 404 exitosa (Usuario no existe
 18:41:04 INFO root - \U0001f389 Test DELETE User ID {created_user_id} completado exitosamente!
+13:34:50 INFO root - 
+=== Test 1: GET Users ===
+13:34:52 INFO root - \u2705 State code 200 - OK
+13:34:52 INFO root - \u2705 Correct JSON structure (List)
+13:34:52 INFO root - \u2705 Correct user structure
+13:34:52 INFO root - \u2705 Correct data types
+13:34:52 INFO root - \U0001f389 GoRest GET Users test successfully completed!
+13:34:52 INFO root - 
+=== Test 2: Post Create User ===
+13:34:54 INFO root - \u2705 State code 201 - Created
+13:34:54 INFO root - \u2705 Correct answer structure
+13:34:54 INFO root - \u2705 Data saved successfully
+13:34:54 INFO root - \u2705 ID assigned correctly: {data['id']}
+13:34:54 INFO root - \U0001f389 CREATE User test completed successfully!
+13:34:54 INFO root - 
+=== Test 3: DELETE User ===
+13:34:55 INFO root - User 8278329 created for DELETE.
+13:34:57 INFO root - \u2705 State code 204 - No Content
+13:34:59 INFO root - \u2705 Verification 404 successful (User does not exist)
+13:34:59 INFO root - \U0001f389 Test DELETE User ID {created_user_id} successfully completed!
+13:34:59 INFO WDM - ====== WebDriver manager ======
+13:35:01 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+13:35:02 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+13:35:03 INFO WDM - Driver [C:\Users\Mat.DESKTOP-BNG783G\.wdm\drivers\geckodriver\win64\v0.36.0\geckodriver.exe] found in cache
+13:35:13 INFO root - 
+=== Test cart: cart page management  ===
+13:35:17 INFO root - correct login - OK
+13:35:38 INFO root - correct cart entering - OK
+13:35:38 INFO root - correct product loading - OK
+13:35:43 INFO root - correct product removing - OK
+13:35:48 INFO WDM - ====== WebDriver manager ======
+13:35:50 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+13:35:51 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+13:35:52 INFO WDM - Driver [C:\Users\Mat.DESKTOP-BNG783G\.wdm\drivers\geckodriver\win64\v0.36.0\geckodriver.exe] found in cache
+13:36:02 INFO root - 
+=== Test checkout process: checkout page management  ===
+13:36:10 INFO root - correct login - OK
+13:36:10 INFO root - correct product loading - OK
+13:36:14 INFO root - correct cart entering - OK
+13:36:17 INFO root - correct checkout entering - OK
+13:36:18 INFO root - correct info loading - OK
+13:36:23 INFO WDM - ====== WebDriver manager ======
+13:36:25 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+13:36:26 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+13:36:27 INFO WDM - Driver [C:\Users\Mat.DESKTOP-BNG783G\.wdm\drivers\geckodriver\win64\v0.36.0\geckodriver.exe] found in cache
+13:36:36 INFO root - 
+=== Test checkout validation: checkout page management  ===
+13:36:44 INFO root - correct login - OK
+13:36:44 INFO root - correct product loading - OK
+13:36:44 INFO root - correct cart entering - OK
+13:36:45 INFO root - correct checkout entering - OK
+13:36:45 INFO root - Error: First Name is required
+13:36:45 INFO root - message error - OK
+13:36:51 INFO WDM - ====== WebDriver manager ======
+13:36:53 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+13:36:54 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+13:36:55 INFO WDM - Driver [C:\Users\Mat.DESKTOP-BNG783G\.wdm\drivers\geckodriver\win64\v0.36.0\geckodriver.exe] found in cache
+13:37:05 INFO root - 
+=== Test complete navigation: checkout page management  ===
+13:37:13 INFO root - correct login - OK
+13:37:14 INFO root - correct product loading - OK
+13:37:14 INFO root - correct cart entering - OK
+13:37:18 INFO root - correct checkout entering - OK
+13:37:23 INFO root - correct info loading - OK
+13:37:23 INFO root - successful completion of purchase - OK
+13:37:23 INFO root -  message:Thank you for your order! - OK
+13:37:23 INFO root - correct back at home - OK
+13:37:28 INFO WDM - ====== WebDriver manager ======
+13:37:30 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+13:37:31 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+13:37:32 INFO WDM - Driver [C:\Users\Mat.DESKTOP-BNG783G\.wdm\drivers\geckodriver\win64\v0.36.0\geckodriver.exe] found in cache
+13:37:41 INFO root - 
+=== Test inventory: inventory page management  ===
+13:37:51 INFO root - correct login - OK
+13:37:51 INFO root - page title - OK
+13:37:52 INFO root - correct product loading - OK
+13:37:52 INFO root - correct cart entering - OK
+13:38:01 INFO root - correct cart logouting - OK
+13:38:06 INFO WDM - ====== WebDriver manager ======
+13:38:08 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+13:38:09 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+13:38:10 INFO WDM - Driver [C:\Users\Mat.DESKTOP-BNG783G\.wdm\drivers\geckodriver\win64\v0.36.0\geckodriver.exe] found in cache
+13:38:19 INFO root - 
+=== Test Login: login de users ===
+13:38:23 INFO root -  correct login - OK
+13:38:31 INFO WDM - ====== WebDriver manager ======
+13:38:33 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+13:38:34 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+13:38:35 INFO WDM - Driver [C:\Users\Mat.DESKTOP-BNG783G\.wdm\drivers\geckodriver\win64\v0.36.0\geckodriver.exe] found in cache
+13:38:44 INFO root - 
+=== Test Login: login de users ===
+13:38:48 INFO root - mesage de error:Epic sadface: Sorry, this user has been locked out.
+13:38:48 INFO root - incorrect login - OK
+13:38:54 INFO WDM - ====== WebDriver manager ======
+13:38:56 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+13:38:57 INFO WDM - Get LATEST geckodriver version for 145.0 firefox
+13:38:59 INFO WDM - Driver [C:\Users\Mat.DESKTOP-BNG783G\.wdm\drivers\geckodriver\win64\v0.36.0\geckodriver.exe] found in cache
+13:39:08 INFO root - 
+=== Test Login: login de users ===
+13:39:12 INFO root - mesage de error:Epic sadface: Username and password do not match any user in this service
+13:39:12 INFO root - incorrect login - OK
