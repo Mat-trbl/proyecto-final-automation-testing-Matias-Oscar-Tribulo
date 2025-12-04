@@ -47,6 +47,7 @@ def get_login_csv(csv_file="data_login.csv"):
         for i in read:
             username = i["username"]
             password = i["password"]
-            login_example = i["login_example"]
+            login_example_str = i["login_example"]
+            login_example = login_example_str.lower() == "true"
             casos.append((username,password,login_example))
     return casos
