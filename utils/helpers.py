@@ -48,6 +48,7 @@ def get_login_csv(csv_file="data_login.csv"):
             username = i["username"]
             password = i["password"]
             login_example_str = i["login_example"]
+            # combierto a boleano
             login_example = login_example_str.lower() == "true"
             casos.append((username,password,login_example))
     return casos
